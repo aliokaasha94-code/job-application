@@ -315,7 +315,7 @@
               <label class="block text-sm text-white font-semibold mb-1.5" for="applied_position">
                 الوظيفة المتقدم لها <span class="text-amber-400">*</span>
               </label>
-              <input type="text" id="applied_position" name="applied_position" required class="luxury-input" placeholder="اكتب المسمى الوظيفي المطلوب (مثال: باريستا، ويتر، كاشير...)" />
+              <input type="text" id="applied_position" name="applied_position" required class="luxury-input" placeholder="" />
             </div>
 
             <!-- 2. الراتب المتوقع + تاريخ التقديم -->
@@ -325,7 +325,7 @@
                   الراتب المتوقع (ج.م) <span class="text-amber-400">*</span>
                 </label>
                 <div class="relative">
-                  <input type="number" id="expected_salary" name="expected_salary" required class="luxury-input num-en pl-16 font-bold" placeholder="مثال: 6000" />
+                  <input type="number" id="expected_salary" name="expected_salary" required class="luxury-input num-en pl-16 font-bold" placeholder="" />
                   <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gold-light font-bold bg-white/5 px-2 py-1 rounded border border-gold/20">ج.م</span>
                 </div>
               </div>
@@ -334,7 +334,7 @@
                 <label class="block text-sm text-white font-semibold mb-1.5" for="application_date">
                   تاريخ التقديم
                 </label>
-                <input type="text" id="application_date" name="application_date" readonly class="luxury-input num-en bg-white/5 text-gold-light font-bold cursor-default" value="08 / 11 / 2026" />
+                <input type="text" id="application_date" name="application_date" readonly class="luxury-input num-en bg-white/5 text-gold-light font-bold cursor-default" value="" />
               </div>
             </div>
           </div>
@@ -356,7 +356,7 @@
               <label class="block text-sm text-white font-semibold mb-1.5" for="full_name">
                 الاسم رباعي (كما بالبطاقة) <span class="text-amber-400">*</span>
               </label>
-              <input type="text" id="full_name" name="full_name" required class="luxury-input" placeholder="أدخل اسمك رباعياً باللغة العربية" />
+              <input type="text" id="full_name" name="full_name" required class="luxury-input" placeholder="" />
             </div>
 
             <!-- العنوان بالتفصيل: سطرين -->
@@ -378,7 +378,7 @@
                 <label class="block text-sm text-white font-semibold mb-1.5" for="national_id">
                   الرقم القومي (14 رقم) <span class="text-amber-400">*</span>
                 </label>
-                <input type="text" id="national_id" name="national_id" maxlength="14" required class="luxury-input num-en tracking-wider font-semibold" placeholder="2990101xxxxxxx" oninput="handleNationalId(this.value)" />
+                <input type="text" id="national_id" name="national_id" maxlength="14" required class="luxury-input num-en tracking-wider font-semibold" placeholder="" oninput="handleNationalId(this.value)" />
                 <div id="nidFeedback" class="hidden mt-1.5 p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-400 flex items-center gap-1.5">
                   <span class="material-symbols-outlined text-[16px]">verified</span>
                   <span id="nidFeedbackText">تم التحقق من الرقم القومي</span>
@@ -389,7 +389,7 @@
                 <label class="block text-sm text-white font-semibold mb-1.5" for="birth_date">
                   تاريخ الميلاد <span class="text-amber-400">*</span>
                 </label>
-                <input type="date" id="birth_date" name="birth_date" required class="luxury-input num-en" onchange="calculateAge(this.value)" />
+                <input type="text" id="birth_date" name="birth_date" maxlength="14" required class="luxury-input num-en tracking-wider font-semibold" placeholder="  /  / 20" oninput="handleBirthDateInput(this.value)" />
               </div>
 
               <div>
@@ -407,7 +407,7 @@
                   رقم الموبايل <span class="text-amber-400">*</span>
                 </label>
                 <div class="relative">
-                  <input type="tel" id="mobile_number" name="mobile_number" maxlength="11" required class="luxury-input num-en font-semibold pl-20" placeholder="010xxxxxxxx" oninput="handleMobileInput(this.value)" />
+                  <input type="tel" id="mobile_number" name="mobile_number" maxlength="11" required class="luxury-input num-en font-semibold pl-20" placeholder="" oninput="handleMobileInput(this.value)" />
                   <span id="carrierBadge" class="hidden absolute left-2 top-1/2 -translate-y-1/2 text-[10px] font-bold px-2 py-0.5 rounded-md border text-gold-light bg-black/60 border-gold/30">شبكة</span>
                 </div>
               </div>
@@ -422,7 +422,7 @@
                     <span>نفس رقم الموبايل</span>
                   </label>
                 </div>
-                <input type="tel" id="whatsapp_number" name="whatsapp_number" required class="luxury-input num-en font-semibold" placeholder="010xxxxxxxx" />
+                <input type="tel" id="whatsapp_number" name="whatsapp_number" required class="luxury-input num-en font-semibold" placeholder="" />
               </div>
             </div>
 
@@ -466,23 +466,23 @@
               <!-- حقل الخريج -->
               <div id="gradFieldBlock">
                 <label class="block text-xs text-muted mb-1" for="grad_qualification">المؤهل الدراسي والتخصص:</label>
-                <input type="text" id="grad_qualification" name="grad_qualification" class="luxury-input" placeholder="اكتب المؤهل (مثال: بكالوريوس تجارة / دبلوم فني...)" />
+                <input type="text" id="grad_qualification" name="grad_qualification" class="luxury-input" placeholder="" />
               </div>
 
               <!-- حقول الطالب (تظهر عند اختيار طالب) -->
               <div id="studentFieldsBlock" class="hidden space-y-3 p-3.5 rounded-xl bg-white/5 border border-gold/20">
                 <div>
                   <label class="block text-xs text-muted mb-1" for="school_name">الكلية / المعهد / المدرسة:</label>
-                  <input type="text" id="school_name" name="school_name" class="luxury-input" placeholder="اسم الكلية أو المعهد" />
+                  <input type="text" id="school_name" name="school_name" class="luxury-input" placeholder="" />
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label class="block text-xs text-muted mb-1" for="study_year">الفرقة / السنة الدراسية:</label>
-                    <input type="text" id="study_year" name="study_year" class="luxury-input" placeholder="مثال: الفرقة الثالثة" />
+                    <input type="text" id="study_year" name="study_year" class="luxury-input" placeholder="" />
                   </div>
                   <div>
                     <label class="block text-xs text-muted mb-1" for="attendance_nature">طبيعة الحضور:</label>
-                    <input type="text" id="attendance_nature" name="attendance_nature" class="luxury-input" placeholder="منتظم / انتساب" />
+                    <input type="text" id="attendance_nature" name="attendance_nature" class="luxury-input" placeholder="" />
                   </div>
                 </div>
               </div>
@@ -513,25 +513,25 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs text-muted mb-1">اسم المنشأة / المكان:</label>
-                  <input type="text" name="exp_company[]" class="luxury-input" placeholder="اسم الكافيه أو الشركة" />
+                  <input type="text" name="exp_company[]" class="luxury-input" placeholder="" />
                 </div>
                 <div>
                   <label class="block text-xs text-muted mb-1">المسمى الوظيفي / القسم:</label>
-                  <input type="text" name="exp_role[]" class="luxury-input" placeholder="مثال: باريستا / كاشير..." />
+                  <input type="text" name="exp_role[]" class="luxury-input" placeholder="" />
                 </div>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
                   <label class="block text-xs text-muted mb-1">الفترة (من - إلى):</label>
-                  <input type="text" name="exp_period[]" class="luxury-input num-en" placeholder="2022 - 2024" />
+                  <input type="text" name="exp_period[]" class="luxury-input num-en" placeholder="" />
                 </div>
                 <div>
                   <label class="block text-xs text-muted mb-1">آخر راتب (ج.م):</label>
-                  <input type="number" name="exp_salary[]" class="luxury-input num-en" placeholder="5000" />
+                  <input type="number" name="exp_salary[]" class="luxury-input num-en" placeholder="" />
                 </div>
                 <div>
                   <label class="block text-xs text-muted mb-1">سبب ترك العمل:</label>
-                  <input type="text" name="exp_reason[]" class="luxury-input" placeholder="سبب الترك" />
+                  <input type="text" name="exp_reason[]" class="luxury-input" placeholder="" />
                 </div>
               </div>
             </div>
@@ -562,21 +562,21 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs text-muted mb-1">الاسم:</label>
-                  <input type="text" name="ref_name[]" class="luxury-input" placeholder="اسم الشخص المسؤول" />
+                  <input type="text" name="ref_name[]" class="luxury-input" placeholder="" />
                 </div>
                 <div>
                   <label class="block text-xs text-muted mb-1">المكان / الشركة:</label>
-                  <input type="text" name="ref_company[]" class="luxury-input" placeholder="اسم المكان" />
+                  <input type="text" name="ref_company[]" class="luxury-input" placeholder="" />
                 </div>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs text-muted mb-1">المسمى الوظيفي:</label>
-                  <input type="text" name="ref_position[]" class="luxury-input" placeholder="وظيفته (مثال: مدير فرع)" />
+                  <input type="text" name="ref_position[]" class="luxury-input" placeholder="" />
                 </div>
                 <div>
                   <label class="block text-xs text-muted mb-1">رقم التليفون:</label>
-                  <input type="tel" name="ref_phone[]" class="luxury-input num-en" placeholder="01xxxxxxxxx" />
+                  <input type="tel" name="ref_phone[]" class="luxury-input num-en" placeholder="" />
                 </div>
               </div>
             </div>
@@ -618,7 +618,7 @@
               </div>
               <div>
                 <label class="block text-xs text-muted mb-1" for="start_work_after">تستطيع بدء العمل معنا بعد:</label>
-                <input type="text" id="start_work_after" name="start_work_after" class="luxury-input text-sm" placeholder="مثال: فوراً / بعد أسبوعين / بعد انتهاء الامتحانات" value="فوراً" />
+                <input type="text" id="start_work_after" name="start_work_after" class="luxury-input text-sm" placeholder="" value="فوراً" />
               </div>
             </div>
 
@@ -654,7 +654,7 @@
               </div>
               <div>
                 <label class="block text-xs text-muted mb-1" for="relative_name">في حال نعم، اكتب الاسم والوظيفة:</label>
-                <input type="text" id="relative_name" name="relative_name" class="luxury-input text-sm" placeholder="اكتب اسم القريب أو المعرفة ووظيفته بالكافيه (أو اتركه فارغاً)" />
+                <input type="text" id="relative_name" name="relative_name" class="luxury-input text-sm" placeholder="" />
               </div>
             </div>
 
@@ -690,7 +690,7 @@
               </div>
               <div>
                 <label class="block text-xs text-muted mb-1" for="chronic_desc">في حال نعم، اكتب التوضيح:</label>
-                <input type="text" id="chronic_desc" name="chronic_desc" class="luxury-input text-sm" placeholder="اكتب التوضيح الخاص بالحالة الصحية (أو لا يوجد)" />
+                <input type="text" id="chronic_desc" name="chronic_desc" class="luxury-input text-sm" placeholder="" />
               </div>
             </div>
 
@@ -718,7 +718,7 @@
                 <label class="block text-xs text-white font-semibold mb-1" for="applicant_signature">
                   توقيع / اسم مقدم الطلب ثلاثياً (إقرار إلكتروني رسمي) <span class="text-amber-400">*</span>
                 </label>
-                <input type="text" id="applicant_signature" name="applicant_signature" required class="luxury-input text-sm" placeholder="اكتب اسمك ثلاثياً كتوقيع رسمي على صحة البيانات" oninput="handleSignatureInput(this.value)" />
+                <input type="text" id="applicant_signature" name="applicant_signature" required class="luxury-input text-sm" placeholder="" oninput="handleSignatureInput(this.value)" />
                 <div id="signaturePreviewCard" class="hidden mt-2.5 p-3.5 rounded-xl bg-black/60 border border-gold/40 flex items-center justify-between shadow-lg">
                   <div>
                     <span class="text-[10px] text-muted block mb-0.5">المعاينة الرسمية للتوقيع الرقمي المعتمد:</span>
@@ -877,7 +877,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
           <div>
             <label class="block text-xs text-muted mb-1" for="eval_nomination">ترشيح لقسم آخر:</label>
-            <input type="text" id="eval_nomination" class="luxury-input text-xs" placeholder="مثال: قسم الصالة أو الكاشير" />
+            <input type="text" id="eval_nomination" class="luxury-input text-xs" placeholder="" />
           </div>
           <div>
             <label class="block text-xs text-muted mb-1" for="eval_evaluator_name">اسم المقيّم:</label>
@@ -993,6 +993,47 @@
   <script>
     
     
+    
+    // Real-time Dynamic Application Date (Auto-updated on page load)
+    function setRealtimeApplicationDate() {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      const el = document.getElementById('application_date');
+      if (el) {
+        el.value = `${day} / ${month} / ${year}`;
+      }
+    }
+
+    // Manual Birth Date Formatter (DD / MM / YYYY)
+    function handleBirthDateInput(val) {
+      // If user types numbers manually without National ID
+      let clean = val.replace(/[^0-9]/g, '');
+      if (clean.length > 8) clean = clean.substring(0, 8);
+      
+      let formatted = '';
+      if (clean.length > 0) formatted += clean.substring(0, 2);
+      if (clean.length >= 3) formatted += ' / ' + clean.substring(2, 4);
+      if (clean.length >= 5) formatted += ' / ' + clean.substring(4, 8);
+      
+      if (formatted && formatted !== val) {
+        document.getElementById('birth_date').value = formatted;
+      }
+
+      if (clean.length === 8) {
+        const d = parseInt(clean.substring(0, 2));
+        const m = parseInt(clean.substring(2, 4));
+        const y = parseInt(clean.substring(4, 8));
+        if (d >= 1 && d <= 31 && m >= 1 && m <= 12 && y >= 1950 && y <= 2015) {
+          const birthDateStr = `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+          calculateAge(birthDateStr);
+        }
+      }
+      updateFormProgress();
+      saveDraft();
+    }
+
     // ==================== SMART EGYPTIAN NATIONAL ID DECODER ====================
     const egyptianGovMap = {
       '01': 'القاهرة', '02': 'الإسكندرية', '03': 'بورسعيد', '04': 'السويس',
@@ -1031,11 +1072,12 @@
         const govCode = idStr.substring(7, 9);
         const govName = egyptianGovMap[govCode] || 'محافظة أخرى';
 
-        const birthDateStr = `${year}-${month}-${day}`;
+        const birthDateIso = `${year}-${month}-${day}`;
+        const birthDateDisplay = `${day} / ${month} / ${year}`;
         const birthInput = document.getElementById('birth_date');
-        if (birthInput) birthInput.value = birthDateStr;
+        if (birthInput) birthInput.value = birthDateDisplay;
 
-        calculateAge(birthDateStr);
+        calculateAge(birthDateIso);
         const ageVal = document.getElementById('age').value || '';
 
         if (feedback) {
@@ -1201,6 +1243,7 @@
 
     // Attach real-time listeners on form inputs
     window.addEventListener('DOMContentLoaded', () => {
+      setRealtimeApplicationDate();
       loadDraft();
       updateFormProgress();
 
@@ -1295,7 +1338,27 @@
 
     function calculateAge(dateStr) {
       if (!dateStr) return;
-      const birth = new Date(dateStr);
+      let birthYear, birthMonth, birthDay;
+
+      if (dateStr.includes('/')) {
+        const parts = dateStr.split('/').map(p => parseInt(p.trim()));
+        if (parts.length === 3) {
+          birthDay = parts[0];
+          birthMonth = parts[1] - 1;
+          birthYear = parts[2];
+        }
+      } else if (dateStr.includes('-')) {
+        const parts = dateStr.split('-').map(p => parseInt(p.trim()));
+        if (parts.length === 3) {
+          birthYear = parts[0];
+          birthMonth = parts[1] - 1;
+          birthDay = parts[2];
+        }
+      }
+
+      if (!birthYear || isNaN(birthYear)) return;
+
+      const birth = new Date(birthYear, birthMonth, birthDay);
       const today = new Date();
       let age = today.getFullYear() - birth.getFullYear();
       const m = today.getMonth() - birth.getMonth();
@@ -1366,25 +1429,25 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs text-muted mb-1">اسم المنشأة / المكان:</label>
-            <input type="text" name="exp_company[]" class="luxury-input" placeholder="اسم الكافيه أو الشركة" />
+            <input type="text" name="exp_company[]" class="luxury-input" placeholder="" />
           </div>
           <div>
             <label class="block text-xs text-muted mb-1">المسمى الوظيفي / القسم:</label>
-            <input type="text" name="exp_role[]" class="luxury-input" placeholder="مثال: ويتر / كاشير..." />
+            <input type="text" name="exp_role[]" class="luxury-input" placeholder="" />
           </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
             <label class="block text-xs text-muted mb-1">الفترة (من - إلى):</label>
-            <input type="text" name="exp_period[]" class="luxury-input num-en" placeholder="2022 - 2024" />
+            <input type="text" name="exp_period[]" class="luxury-input num-en" placeholder="" />
           </div>
           <div>
             <label class="block text-xs text-muted mb-1">آخر راتب (ج.م):</label>
-            <input type="number" name="exp_salary[]" class="luxury-input num-en" placeholder="5000" />
+            <input type="number" name="exp_salary[]" class="luxury-input num-en" placeholder="" />
           </div>
           <div>
             <label class="block text-xs text-muted mb-1">سبب ترك العمل:</label>
-            <input type="text" name="exp_reason[]" class="luxury-input" placeholder="سبب الترك" />
+            <input type="text" name="exp_reason[]" class="luxury-input" placeholder="" />
           </div>
         </div>
       `;
@@ -1409,21 +1472,21 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs text-muted mb-1">الاسم:</label>
-            <input type="text" name="ref_name[]" class="luxury-input" placeholder="اسم الشخص المسؤول" />
+            <input type="text" name="ref_name[]" class="luxury-input" placeholder="" />
           </div>
           <div>
             <label class="block text-xs text-muted mb-1">المكان / الشركة:</label>
-            <input type="text" name="ref_company[]" class="luxury-input" placeholder="اسم المكان" />
+            <input type="text" name="ref_company[]" class="luxury-input" placeholder="" />
           </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs text-muted mb-1">المسمى الوظيفي:</label>
-            <input type="text" name="ref_position[]" class="luxury-input" placeholder="وظيفته" />
+            <input type="text" name="ref_position[]" class="luxury-input" placeholder="" />
           </div>
           <div>
             <label class="block text-xs text-muted mb-1">رقم التليفون:</label>
-            <input type="tel" name="ref_phone[]" class="luxury-input num-en" placeholder="01xxxxxxxxx" />
+            <input type="tel" name="ref_phone[]" class="luxury-input num-en" placeholder="" />
           </div>
         </div>
       `;
