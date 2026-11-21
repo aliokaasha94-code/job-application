@@ -611,14 +611,14 @@
                     <div class="pill-box choice-pill py-1.5 px-4 text-xs" id="pillWorkYes">نعم</div>
                   </label>
                   <label class="cursor-pointer">
-                    <input type="radio" name="currently_working" value="no" class="sr-only" checked onchange="handleCurrentlyWorking(false)" />
-                    <div class="pill-box choice-pill active py-1.5 px-4 text-xs" id="pillWorkNo">لا</div>
+                    <input type="radio" name="currently_working" value="no" class="sr-only" onchange="handleCurrentlyWorking(false)" />
+                    <div class="pill-box choice-pill py-1.5 px-4 text-xs" id="pillWorkNo">لا</div>
                   </label>
                 </div>
               </div>
               <div>
                 <label class="block text-xs text-muted mb-1" for="start_work_after">تستطيع بدء العمل معنا بعد:</label>
-                <input type="text" id="start_work_after" name="start_work_after" class="luxury-input text-sm" placeholder="" value="فوراً" />
+                <input type="text" id="start_work_after" name="start_work_after" class="luxury-input text-sm" placeholder="" value="" />
               </div>
             </div>
 
@@ -631,8 +631,8 @@
                   <div class="pill-box choice-pill py-1.5 px-4 text-xs">نعم</div>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="radio" name="worked_at_emad" value="no" class="sr-only" checked />
-                  <div class="pill-box choice-pill active py-1.5 px-4 text-xs">لا</div>
+                  <input type="radio" name="worked_at_emad" value="no" class="sr-only" />
+                <div class="pill-box choice-pill py-1.5 px-4 text-xs">لا</div>
                 </label>
               </div>
             </div>
@@ -647,8 +647,8 @@
                     <div class="pill-box choice-pill py-1.5 px-4 text-xs" id="pillRelYes">نعم</div>
                   </label>
                   <label class="cursor-pointer">
-                    <input type="radio" name="has_relatives" value="no" class="sr-only" checked onchange="handleRelatives(false)" />
-                    <div class="pill-box choice-pill active py-1.5 px-4 text-xs" id="pillRelNo">لا</div>
+                    <input type="radio" name="has_relatives" value="no" class="sr-only" onchange="handleRelatives(false)" />
+                    <div class="pill-box choice-pill py-1.5 px-4 text-xs" id="pillRelNo">لا</div>
                   </label>
                 </div>
               </div>
@@ -667,8 +667,8 @@
                   <div class="pill-box choice-pill py-1.5 px-4 text-xs">نعم</div>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="radio" name="is_smoker" value="no" class="sr-only" checked />
-                  <div class="pill-box choice-pill active py-1.5 px-4 text-xs">لا</div>
+                  <input type="radio" name="is_smoker" value="no" class="sr-only" />
+                <div class="pill-box choice-pill py-1.5 px-4 text-xs">لا</div>
                 </label>
               </div>
             </div>
@@ -683,8 +683,8 @@
                     <div class="pill-box choice-pill py-1.5 px-4 text-xs" id="pillChrYes">نعم</div>
                   </label>
                   <label class="cursor-pointer">
-                    <input type="radio" name="chronic_diseases" value="no" class="sr-only" checked onchange="handleChronic(false)" />
-                    <div class="pill-box choice-pill active py-1.5 px-4 text-xs" id="pillChrNo">لا</div>
+                    <input type="radio" name="chronic_diseases" value="no" class="sr-only" onchange="handleChronic(false)" />
+                    <div class="pill-box choice-pill py-1.5 px-4 text-xs" id="pillChrNo">لا</div>
                   </label>
                 </div>
               </div>
@@ -699,8 +699,8 @@
               <span class="text-white font-semibold">6. الاستعداد للعمل الإضافي ومواسم الأعياد: <span class="text-amber-400">*</span></span>
               <div class="flex gap-2">
                 <label class="cursor-pointer">
-                  <input type="radio" name="overtime_ready" value="agree" class="sr-only" checked />
-                  <div class="pill-box choice-pill active py-1.5 px-4 text-xs">موافق</div>
+                  <input type="radio" name="overtime_ready" value="agree" class="sr-only" />
+                <div class="pill-box choice-pill py-1.5 px-4 text-xs">موافق</div>
                 </label>
                 <label class="cursor-pointer">
                   <input type="radio" name="overtime_ready" value="disagree" class="sr-only" />
@@ -1274,10 +1274,8 @@
     });
 
     function handleCurrentlyWorking(isWorking) {
-      const input = document.getElementById('start_work_after');
-      if (input) {
-        input.value = isWorking ? 'بعد أسبوعين' : 'فوراً';
-      }
+      // do not auto-fill values; let user type
+    }
     }
 
     function handleRelatives(hasRel) {
