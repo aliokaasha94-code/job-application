@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عماد أفندي | بوابة التوظيف ولوحة الإدارة - المعاينة الحية</title>
+  <link rel="icon" type="image/png" href="./assets/official_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --card: #0e1014;
+      --card-border: rgba(212, 175, 55, 0.35);
+      --gold: #d4af37;
+      --gold-2: #f1dd9a;
+      --gold-dim: rgba(212, 175, 55, 0.16);
+      --cream: #F5EFE6;
+      --muted: #9CA3AF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Cairo', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    
+    /* Ambient Glow & Waves */
+    .bg-glow {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background: radial-gradient(800px 400px at 50% -100px, rgba(212,175,55,.28), transparent 70%),
+                  radial-gradient(600px 450px at 90% 50%, rgba(212,175,55,.10), transparent 70%),
+                  radial-gradient(600px 500px at 10% 90%, rgba(212,175,55,.12), transparent 70%);
+    }
+
+    /* Top Floating Controller */
+    header.controller {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10, 10, 12, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-logo {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      padding: 2px;
+      background: #141108;
+      box-shadow: 0 0 12px rgba(212,175,55,0.3);
+      object-fit: cover;
+    }
+    .brand-info h1 {
+      font-size: 15px; font-weight: 800; color: #fff;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .brand-info p {
+      font-size: 11px; color: var(--gold-2); font-weight: 600;
+    }
+    
+    /* Navigation Pills */
+    .tabs-wrap {
+      display: flex;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 999px;
+      padding: 4px;
+    }
+    .tab-btn {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .tab-btn:hover {
+      color: var(--cream);
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      color: #1a1408;
+      box-shadow: 0 4px 14px rgba(212,175,55,0.4);
+    }
+    
+    /* Device Controls */
+    .device-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dev-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      color: var(--gold-2);
+      border-radius: 10px;
+      padding: 7px 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .dev-btn:hover, .dev-btn.active {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+      color: #fff;
+    }
+
+    /* Main Preview Container */
+    main.stage {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 16px 40px;
+      transition: all 0.3s ease;
+    }
+
+    /* Device Mockup Shell */
+    .frame-wrapper {
+      position: relative;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 430px; /* Default Mobile */
+      max-width: 100%;
+    }
+    .frame-wrapper.mobile {
+      width: 430px;
+      border-radius: 36px;
+      border: 8px solid #1f1d18;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 35px rgba(212,175,55,0.18), inset 0 0 0 1px rgba(212,175,55,0.4);
+      background: #000;
+      padding-top: 24px;
+      padding-bottom: 12px;
+    }
+    .frame-wrapper.mobile::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 18px;
+      background: #141414;
+      border-radius: 12px;
+      z-index: 20;
+    }
+    .frame-wrapper.tablet {
+      width: 768px;
+      border-radius: 24px;
+      border: 6px solid #1f1d18;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 35px rgba(212,175,55,0.18);
+      background: #000;
+      padding-top: 16px;
+    }
+    .frame-wrapper.desktop {
+      width: 100%;
+      max-width: 1200px;
+      border-radius: 18px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.85);
+      background: #000;
+    }
+
+    /* Iframe Viewport */
+    iframe#viewFrame {
+      width: 100%;
+      height: 860px;
+      border: none;
+      border-radius: 20px;
+      background: #000;
+      display: block;
+      transition: height 0.2s;
+    }
+
+    /* Footer hints */
+    footer.hint-bar {
+      text-align: center;
+      padding: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      z-index: 10;
+    }
+    footer.hint-bar a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    footer.hint-bar a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      header.controller {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+      }
+      .tabs-wrap {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+      .frame-wrapper.mobile {
+        width: 100%;
+        border-width: 2px;
+        border-radius: 20px;
+        padding-top: 0;
+      }
+      .frame-wrapper.mobile::before {
+        display: none;
+      }
+      iframe#viewFrame {
+        height: 80vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <!-- CONTROLLER -->
+  <header class="controller">
+    <div class="brand-section">
+      <img src="./assets/official_logo.png" alt="عماد أفندي" class="brand-logo" onerror="this.src='./assets/logo-circle.png'" />
+      <div class="brand-info">
+        <h1>مجموعة عماد أفندي <span style="font-size: 11px; background: var(--gold-dim); color: var(--gold-2); padding: 2px 8px; border-radius: 99px; border: 1px solid rgba(212,175,55,0.3)">بوابة التوظيف</span></h1>
+        <p>المعاينة الحية التفاعلية للـ UI / UX</p>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <nav class="tabs-wrap" aria-label="الشاشات">
+      <button class="tab-btn active" onclick="loadScreen('preview/screen_step1.html', this)">
+        <span class="material-symbols-outlined" style="font-size: 18px">person</span>
+        <span>1. البيانات الشخصية والجاهزية</span>
+      </button>
+      <button class="tab-btn" onclick="loadScreen('preview/screen_experiences.html', this)">
+        <span class="material-symbols-outlined" style="font-size: 18px">work</span>
+        <span>2. الخبرات والمتطلبات</span>
+      </button>
+      <button class="tab-btn" onclick="loadScreen('preview/screen_admin_review.html', this)">
+        <span class="material-symbols-outlined" style="font-size: 18px">rate_review</span>
+        <span>3. لوحة مستر إبراهيم (التقييم)</span>
+      </button>
+    </nav>
+
+    <!-- DEVICE CONTROLS -->
+    <div class="device-controls">
+      <button class="dev-btn active" id="btnMobile" onclick="setDevice('mobile')" title="عرض الموبايل (iPhone)">
+        <span class="material-symbols-outlined" style="font-size: 18px">smartphone</span>
+        <span>موبايل</span>
+      </button>
+      <button class="dev-btn" id="btnTablet" onclick="setDevice('tablet')" title="عرض التابلت">
+        <span class="material-symbols-outlined" style="font-size: 18px">tablet_mac</span>
+        <span>تابلت</span>
+      </button>
+      <button class="dev-btn" id="btnDesktop" onclick="setDevice('desktop')" title="عرض الشاشة الكاملة">
+        <span class="material-symbols-outlined" style="font-size: 18px">desktop_windows</span>
+        <span>كامل</span>
+      </button>
+      <a class="dev-btn" id="openExternal" href="preview/screen_step1.html" target="_blank" title="فتح في صفحة مستقلة">
+        <span class="material-symbols-outlined" style="font-size: 18px">open_in_new</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- STAGE -->
+  <main class="stage">
+    <div class="frame-wrapper mobile" id="frameWrapper">
+      <iframe id="viewFrame" src="preview/screen_step1.html" title="شاشة المعاينة"></iframe>
+    </div>
+  </main>
+
+  <footer class="hint-bar">
+    هوية ونظام تصميم مجموعة عماد أفندي • متوافق مع الورقة المعتمدة ومستر إبراهيم 100%
+  </footer>
+
+  <script>
+    let currentScreen = 'preview/screen_step1.html';
+
+    function loadScreen(url, btn) {
+      currentScreen = url;
+      const iframe = document.getElementById('viewFrame');
+      iframe.style.opacity = '0.3';
+      iframe.src = url;
+      iframe.onload = () => {
+        iframe.style.opacity = '1';
+      };
+      
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      document.getElementById('openExternal').href = url;
+    }
+
+    function setDevice(device) {
+      const wrapper = document.getElementById('frameWrapper');
+      wrapper.className = 'frame-wrapper ' + device;
+      
+      document.querySelectorAll('.dev-btn').forEach(b => b.classList.remove('active'));
+      if (device === 'mobile') document.getElementById('btnMobile').classList.add('active');
+      if (device === 'tablet') document.getElementById('btnTablet').classList.add('active');
+      if (device === 'desktop') document.getElementById('btnDesktop').classList.add('active');
+    }
+  </script>
+</body>
+</html>
